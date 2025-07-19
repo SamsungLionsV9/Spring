@@ -218,7 +218,7 @@ INSERT INTO article(id, title, content) VALUES(3, 'ccccc', '33333');을 DB입력
 ---
 확인문제
 ---
-
+```
 (ㄱ) DB에서 데이터를 저장하는 틀
 (ㄴ) 테이블의 행을 표현하는 다른 말
 (ㄷ) 데이터의 생성/조회/수정/삭제를 뜻하는 말
@@ -230,7 +230,7 @@ INSERT INTO article(id, title, content) VALUES(3, 'ccccc', '33333');을 DB입력
 (ㄷ) CRUD
 (ㄹ) INSERT
 (ㅁ) SELECT
-
+```
 
 
 
