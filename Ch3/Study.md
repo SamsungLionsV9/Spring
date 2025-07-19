@@ -88,6 +88,19 @@ ArticleForm의 데이터 출력 확인
 `
 
 ---
+확인문제
+---
+```
+다음 중 옳지 않은 것을 고르세요.
+1. <form>태그의 action속성에는 데이터를 전달할 URL 주소가 담긴다.
+2. <form>태그의 method 속성에는 get만 사용할 수 있다.
+3. @PostMapping 어노테이션은 post 방식으로 전달된 요청을 받아 컨트롤러의 메서드에 전달한다.
+4. 폼 데이터를 자동으로 받으려면 입력 폼에서 <input>, <textarea>태그의 name 속성과 DTO 클래스의 필드명이 같아야한다.
+
+-> 2(Post, put, delete도 가능함)
+```
+
+---
 # 3.3 DTO를 데이터베이스에 저장하기
 ---
 
@@ -142,6 +155,83 @@ ArticleRepsitory 만들기
 <img width="557" height="719" alt="image" src="https://github.com/user-attachments/assets/454cbff0-1ddb-4c90-aefb-dcb7ac8a2ac3" />
 
 <img width="743" height="224" alt="image" src="https://github.com/user-attachments/assets/116ab687-5442-446c-a3e8-e53c76f80454" />
+
+---
+확인 문제
+---
+
+(ㄱ)란 JPA에서 제공하는 어노테이션으로, 이를 부여받은 클래스를 기반으로 DB속 테이블이 생성됩니다.
+(ㄴ)란 JPA에서 제공하는 인터페이스로, 이를 상속해 엔티티를 관리(CRUD)할 수 있습니다. 해당 인터페이스는 2개의 제네릭 요소를 받습니다.
+하나는 관리할 대상 엔티티의 클래스 타입이고, 또 다른 하나는 그 엔티티의 대푯값 타입입니다.
+(ㄷ)은 스프링 부트에서 제공하는 어노테이션으로, 이를 컨트롤러의 필드에 부여할 수 있습니다. 해당 어노테이션은 스프링 부트가 만들어놓은 객체를 가져와 주입해줍니다.
+
+(ㄱ)@Entity
+(ㄴ)CrudRepository
+(ㄷ)@Autowired
+
+---
+3.4 H2 DB
+---
+```
+1. src>main>resources>application.properties에서 다음 코드 확인
+<img width="280" height="23" alt="image" src="https://github.com/user-attachments/assets/ca5ef09e-1eb2-415b-b29d-d89720b127b5" />
+
+2. application.properties에 다음 코드 추가
+spring.h2.console.enabled=true
+
+3. 서버 시작 후 JDBC URL에 인텔리제이의 Run 탭에서 ctrl+f를 눌러서 jdbc를 검색 후 나오는 결과를 JDBC URL칸에 입력해준다.
+<img width="446" height="77" alt="image" src="https://github.com/user-attachments/assets/8abe83f6-2828-414d-9589-05868d126c2e" />
+
+그 전에 build.gradle에 의존성부분에 runtimeOnly 'com.h2database:h2'를 추가해줘야 h2-console 창이 뜬다.
+<img width="499" height="460" alt="image" src="https://github.com/user-attachments/assets/6a7028ea-5539-40c1-bed8-fe59812b92d8" />
+
+<img width="545" height="371" alt="image" src="https://github.com/user-attachments/assets/b8beb39a-22ca-460c-8052-f9876bc30b6c" />
+
+JDBC URL을 넣고 연결 시 <img width="859" height="711" alt="image" src="https://github.com/user-attachments/assets/d5a7117b-c77a-4c45-8015-99956ed7c765" />
+다음과 같은 창이 뜬다. 정상적으로 접속한 것 이다.
+```
+
+---
+3.4.2 데이터 조회
+---
+```
+<img width="237" height="33" alt="image" src="https://github.com/user-attachments/assets/f47b24a4-49e8-4b74-90c4-b8d8fe8e55cc" />
+여기서 Run 버튼을 누르면 테이블 조회가 가능한데, 데이터는 테이블에 행 단위로 저장이된다.
+행 하나하나는 레코드라고 한다.
+
+<img width="214" height="106" alt="image" src="https://github.com/user-attachments/assets/505cce61-9bfa-4c29-9e7d-0be0cd716f92" />
+
+<img width="750" height="310" alt="image" src="https://github.com/user-attachments/assets/77b06fc1-ea7a-4dee-957d-a25de6934888" />
+이제 데이터를 articles/new에 집어넣고 제출하면
+
+<img width="750" height="310" alt="image" src="https://github.com/user-attachments/assets/d0c2ebd9-66eb-4e7f-9bd2-0c1afcf8afa6" />
+
+테이블에 입력한 정보가 잘 들어간걸 확인할 수 있다.
+```
+레코드 직접 삽입하기
+```
+INSERT INTO article(id, title, content) VALUES(3, 'ccccc', '33333');을 DB입력창에 작성 후 실행하면
+직접 입력된다.
+<img width="147" height="23" alt="image" src="https://github.com/user-attachments/assets/6c568f5e-6db6-4ee1-9157-bbb3f7331e55" />
+```
+
+---
+확인문제
+---
+
+(ㄱ) DB에서 데이터를 저장하는 틀
+(ㄴ) 테이블의 행을 표현하는 다른 말
+(ㄷ) 데이터의 생성/조회/수정/삭제를 뜻하는 말
+(ㄹ) 테이블에 데이터를 생성하는 SQL문
+(ㅁ) 테이블에 데이터를 조회하는 SQL문
+
+(ㄱ) 테이블
+(ㄴ) 레코드
+(ㄷ) CRUD
+(ㄹ) INSERT
+(ㅁ) SELECT
+
+
 
 
 
