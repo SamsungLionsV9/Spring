@@ -21,8 +21,12 @@
 
 하지만, 이걸 하지 않으면 오류가 뜰것이다.
 컨트롤러 코드에 {}를 활용하여 id번호를 변수로 사용할 수 있다.
-<img width="492" height="258" alt="image" src="https://github.com/user-attachments/assets/27e57ed8-4b90-45c8-94ea-bffa1b8d98eb" />
-이 코드를 추가해준다면
-<img width="910" height="40" alt="image" src="https://github.com/user-attachments/assets/e4af29b8-6019-4d92-8b4c-cff19c242d99" />
-페이지가 실제로 로드는 안되지만, 로그에는 찍힌다는것을 확인 할 수 있다.
 ```
+<img width="492" height="258" alt="image" src="https://github.com/user-attachments/assets/27e57ed8-4b90-45c8-94ea-bffa1b8d98eb" />
+`
+이 코드를 추가해준다면
+`
+<img width="910" height="40" alt="image" src="https://github.com/user-attachments/assets/e4af29b8-6019-4d92-8b4c-cff19c242d99" />
+`
+페이지가 실제로 로드는 안되지만, 로그에는 찍힌다는것을 확인 할 수 있다.
+`
