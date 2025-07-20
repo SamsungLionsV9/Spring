@@ -90,9 +90,35 @@ title과 content 이런식으로 뷰에서 보이는 입력되는 데이터 수�
 ---
 5.3 데이터 목록 조회
 ---
+```
 캐스팅(형 변환)을 활용하여 메서드의 반환타입으로 맞춰줄 수 있다.
+업캐스팅 -> 넓은 범위로 해석
+다운캐스팅 -> 좁은 범위로 해석
+```
 <img width="501" height="88" alt="image" src="https://github.com/user-attachments/assets/a0cf3bbf-9167-4fca-b8b2-66e7190f6bdc" />
 ```
 ArrayList(Class)->List(interface)->Collection(interface)->Iterable(interface)
 ```
+
+5장에 있는 컨트롤러부분을 완성하면 다음과 같다.
+<img width="669" height="426" alt="image" src="https://github.com/user-attachments/assets/460a7056-25fe-4483-b39b-5695bee3dea2" />
+
+경로
+<img width="351" height="123" alt="image" src="https://github.com/user-attachments/assets/2fb532db-a0a8-4fad-a7cc-268e53fad1fa" />
+
+
+---
+데이터 입력 후 조회
+---
+<img width="860" height="331" alt="image" src="https://github.com/user-attachments/assets/ff60a3af-1b87-46fc-91cb-a4c40c2161fc" />
+
+<img width="1169" height="209" alt="image" src="https://github.com/user-attachments/assets/7163e6f7-05b2-4c54-b2c6-d9e8fa951d66" />
+
+---
+확인문제
+----
+
+1. (ㄱ)이란 JPA의 CrudRepository가 제공하는 메서드로, 특정 엔티티를 모두 가져와 Iterable 타입으로 반환합니다.
+
+(ㄱ) findAll()
 
