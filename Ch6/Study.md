@@ -48,13 +48,31 @@ Article.java(롬복으로 Getter 어노테이션 추가->saved.getId()의 오류
 ```
 <img width="285" height="33" alt="image" src="https://github.com/user-attachments/assets/47a0e0fc-bda4-4f2e-aac8-66e489963643" />
 
-<img width="404" height="279" alt="image" src="https://github.com/user-attachments/assets/04a320c3-7eae-4f26-9431-fcadb7e9719d" />
-`
+<img width="600" height="216" alt="image" src="https://github.com/user-attachments/assets/1e9faf61-2331-49f2-a085-0e118d48fc35" />
+
+<img width="871" height="411" alt="image" src="https://github.com/user-attachments/assets/cf9cb8d8-f3c6-41be-b604-70ddabb25dfd" />
+
 다음과 같은 되돌아가기 링크가 나타난다.
-`
 
 
+---
+목록페이지->상세페이지
+---
+<img width="586" height="453" alt="image" src="https://github.com/user-attachments/assets/9a41128c-cf90-48aa-a970-efd1911b63ae" />
+링크를 게시물 제목에다 걸어두어서 제목을 누르면 리다이렉트 되게 수정한다.
+<img width="609" height="349" alt="image" src="https://github.com/user-attachments/assets/38ad4dd0-8736-4fbd-b38e-a2633d2f95cb" />
+<img width="609" height="324" alt="image" src="https://github.com/user-attachments/assets/fecefb91-1b0e-4d39-b5d1-f3cc4dc840fa" />
 
+```
+이런식으로 게시물마다 리다이렉트 되게끔 해준다.
+```
 
+---
+확인문제
+---
+(ㄱ)이란 특정 페이지로 이동하는 HTML 태그로, 클릭 시 href 속성에 적힌 URL주소로 요청을 보냅니다.
+(ㄴ)이란 컨트롤러의 특정 메서드 수행을 종료한 후 계속해서 처리할 다음 요청 주소를 지시하는 것이다. 이를 통해 분리된 기능을 연속적인 하나의 흐름으로 연결 할 수 있다.
 
+(ㄱ) <a href>
+(ㄴ) 리다이렉트
 
