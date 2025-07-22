@@ -48,6 +48,33 @@ edit.mustache 생성, new.mustache와 구조가 비슷하므로 복사해서 가
 이렇게 수정폼이 출력이 되는걸 확인 할 수 있다.
 ```
 
+---
+7.3 DB갱신하기
+---
+```
+클라이언트와 서버 간 처리 흐름
+1. MVC: 서버 역할을 분담해서 처리하는 기법
+2. JPA: 서버와 DB간 소통에 관여하는 기술
+3. SQL: DB데이터를 관리하는 언어
+4. HTTP: 데이터를 주고받기 위한 통신 규약
+```
+
+```
+HTTP메서드
+1. POST: 데이터 생성 요청
+2. GET: 데이터 조회 요청
+3. PATCH(PUT): 데이터 수정 요청
+4. DELETE: 데이터 삭제 요청
+```
+
+---
+더미 데이터 설정하기
+---
+1. SQL문 작성하기(resources 파일에 data.sql 작성)
+   <img width="803" height="153" alt="image" src="https://github.com/user-attachments/assets/4b19c7e6-db11-4bd9-9a1a-eaca05869c35" />
+
+2. application.properties에 옵션 추가하기
+<img width="630" height="131" alt="image" src="https://github.com/user-attachments/assets/a3b6edb7-fd7f-4733-b09d-759216530b51" />
 
 
 
