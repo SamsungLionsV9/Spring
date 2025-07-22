@@ -40,9 +40,13 @@ edit.mustache 생성, new.mustache와 구조가 비슷하므로 복사해서 가
 이후 수정 페이지에서 내용이 보일 수 있도록 value={{article.title}} 속성을 추가해준다.
 상단 #article은 article 범위 전체 내에서 사용하겠다라는 의미이며, title, content, id 각각 value형태로 받기 위해서 중괄호 내부에 작성하였다.
 ```
-<img width="749" height="385" alt="image" src="https://github.com/user-attachments/assets/baaa0247-5a51-4558-bfb6-df7b70c6e250" />
+<img width="748" height="371" alt="image" src="https://github.com/user-attachments/assets/8eeef06a-b0d0-4259-b567-cb01ecc667a2" />
 
+<img width="858" height="491" alt="image" src="https://github.com/user-attachments/assets/de0deedc-6667-4f90-bf52-19b4bfbbdbb5" />
 
+```
+이렇게 수정폼이 출력이 되는걸 확인 할 수 있다.
+```
 
 
 
