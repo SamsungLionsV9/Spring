@@ -76,7 +76,7 @@ URL 설정이 testdb로 바뀐걸 확인할 수 있다.
 ```
 이렇게하면 id값이 겹쳐서 무결성이 위배되는 경우를 해결할 수 있다.
 ```
-
+==================
 2. SELECT문
 ```
 특정 데이터를 조회할 때 사용한다. 예시로 실습에서 아까 만든 id=4의 데이터를 조회해보면, 로그가 아래처럼 남는다.
@@ -85,5 +85,6 @@ WHERE절이 추가되었는데, WHERE절은 id가 ?인 데이터를 가져오라
 
 <img width="896" height="231" alt="image" src="https://github.com/user-attachments/assets/8278b880-2d69-4f2c-b723-bb16a44caa4e" />
 
+====================
 3. UPDATE문
 
