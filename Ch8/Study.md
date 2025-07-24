@@ -45,4 +45,36 @@ RedirectAttributes 객체로 리디렉트 페이지에서 사용할 데이터를
 
 <img width="875" height="498" alt="image" src="https://github.com/user-attachments/assets/1e177b70-27d0-44eb-a0c6-3d0e9ce01da7" />
 
+---
+8.4 SQL문으로 직접 삭제하기
+---
+
+`
+(형식) DELETE [FROM] 테이블명 WHERE 조건;
+`
+
+<img width="545" height="510" alt="image" src="https://github.com/user-attachments/assets/91ba575e-6418-4f20-abe0-07d4199717ef" />
+
+`
+여기서 id가 3인 데이터를 삭제해보겠다.
+`
+
+<img width="558" height="443" alt="image" src="https://github.com/user-attachments/assets/3463fd28-5890-4a52-bd33-f810dfec5e83" />
+
+<img width="598" height="489" alt="image" src="https://github.com/user-attachments/assets/b3038d16-3f5b-40ce-8db2-9f80e1c14ba4" />
+
+
+---
+확인문제
+---
+
+*다음 중 옳지 않은 것은?
+1. HTTP는 POST, GET, PATCH(PUT), DELETE등의 다양한 메서드를 제공한다.
+2. 데이터 삭제 요청은 반드시 HTTP의 DELETE 메서드로만 할 수 있다.
+3. @PathVariable은 클라이언트의 요청 중 특정 URL값을 매개변수로 가져온다.
+4. CrudRepository는 데이터 삭제를 위해 delete()메서드를 제공한다.
+5. RedirectAttributes 객체를 활용하면 리다이렉트 페이지에서 사용할 일회성 데이터를 등록할 수 있다.
+
+-> (2), SQL문으로 직접 삭제도 가능하다.
+
 
