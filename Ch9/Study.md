@@ -76,8 +76,9 @@ URL 설정이 testdb로 바뀐걸 확인할 수 있다.
 ```
 이렇게하면 id값이 겹쳐서 무결성이 위배되는 경우를 해결할 수 있다.
 ```
-==================
+
 2. SELECT문
+
 ```
 특정 데이터를 조회할 때 사용한다. 예시로 실습에서 아까 만든 id=4의 데이터를 조회해보면, 로그가 아래처럼 남는다.
 WHERE절이 추가되었는데, WHERE절은 id가 ?인 데이터를 가져오라고 되어있는데, id가 4인 데이터를 조회하라는 쿼리가 수행된 것이다.
@@ -85,6 +86,84 @@ WHERE절이 추가되었는데, WHERE절은 id가 ?인 데이터를 가져오라
 
 <img width="896" height="231" alt="image" src="https://github.com/user-attachments/assets/8278b880-2d69-4f2c-b723-bb16a44caa4e" />
 
-====================
-3. UPDATE문
 
+3. UPDATE문
+`
+edit버튼을 눌러서 데이터를 수정하면 UPDATE 쿼리가 수행될 것이다.
+`
+<img width="822" height="398" alt="image" src="https://github.com/user-attachments/assets/838ebdad-c033-4af6-9ad7-ec51665832da" />
+
+<img width="901" height="402" alt="image" src="https://github.com/user-attachments/assets/80880193-6dc6-408f-86ae-8f28ad459eff" />
+
+4. DELETE문
+`
+DELETE 버튼을 눌러서 DELETE 쿼리를 수행할 수 있다. 이 쿼리는 article 테이블에서 id=4인 데이터를 삭제한다.
+`
+
+<img width="861" height="412" alt="image" src="https://github.com/user-attachments/assets/6c8ab378-a24c-4062-8d84-efe2b3d2732c" />
+
+<img width="1012" height="512" alt="image" src="https://github.com/user-attachments/assets/6639bc1e-3c1e-425a-ad87-2aa12bfdef3a" />
+
+---
+9.3 기본 SQL쿼리 작성하기
+---
+```
+테이블 만들기(인텔리제이 실행창에서 CREATE 검색 후 테이블이 생성된걸 확인가능함)
+먼저 h2-console에서 테이블을 생성해주면 된다.
+
+기본 CREATE TABLE문의 형식은 이렇다.
+  CREATE TABLE 테이블명 (
+    속성1 자료형,
+    속성2 자료형,
+    PRIMARY KEY(기본키)
+  );
+
+이 형식대로 coffee테이블이 생성된걸 확인 할 수 있다.
+```
+
+<img width="430" height="343" alt="image" src="https://github.com/user-attachments/assets/a1e33799-14dc-4b8a-8d4e-faa2fa51131d" />
+
+<img width="366" height="324" alt="image" src="https://github.com/user-attachments/assets/b15ac78d-56a3-4be4-9ff1-b6884a68a25a" />
+
+---
+9.3.1 데이터 생성 및 조회
+---
+
+<img width="448" height="355" alt="image" src="https://github.com/user-attachments/assets/96a81b56-01bc-4228-967f-68669765bea6" />
+
+<img width="350" height="374" alt="image" src="https://github.com/user-attachments/assets/41795913-4ebd-4a68-8b85-47631a1c66b6" />
+
+---
+9.3.2 데이터 수정하기
+---
+```
+id = 1인 아메리카노의 가격을 2500원으로 인하하려고 한다.
+이럴때 SQL문으로 값을 수정해주면된다.
+```
+
+<img width="240" height="348" alt="image" src="https://github.com/user-attachments/assets/67bbb886-5403-47ae-bfb3-2da9a0b5f249" />
+
+<img width="269" height="382" alt="image" src="https://github.com/user-attachments/assets/9cefeec3-8027-4619-93b6-6c3a98754885" />
+
+---
+9.3.3 데이터 삭제
+---
+```
+카페모카 메뉴가 단종되어서 데이터베이스에서 삭제하려고 할떄를 가정하고 쿼리문으로 데이터를 삭제했다.
+성공적으로 삭제가 반영된걸 확인 할 수 있다.
+```
+
+<img width="347" height="334" alt="image" src="https://github.com/user-attachments/assets/2ed158b8-098c-4a5e-b75b-0050fd230b8f" />
+
+<img width="292" height="340" alt="image" src="https://github.com/user-attachments/assets/6d469f3b-af6a-4d08-8b7b-64faaf34824e" />
+
+---
+확인문제
+---
+
+coffee 테이블에서 가격이 4600원인 커피를 찾으려고 한다. 이를 위한 쿼리문은?
+  SELECT *
+  FROM
+    coffee
+  WHERE
+    price = 4600;
