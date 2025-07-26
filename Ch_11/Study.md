@@ -126,8 +126,10 @@ patch 메서드를 Article.java에 만들어준다. 이 기능으로 기존 titl
 확인 문제
 ---
 
+```
 (ㄱ): REST API 구현을 위한 컨트롤러에 사용하는 어노테이션 ->  @RestController
 (ㄴ): HTTP 요청 중 PATCH 메서드를 처리하는 어노테이션 -> @PatchMapping
 (ㄷ): HTTP 요청 중 DELETE 메서드를 처리하는 어노테이션 -> @DeleteMapping
 (ㄹ): REST API 요청을 받아 응답할 때 생기는 HTTP 상태 코드, 헤더, 본문을 실어 보내는 클래스 -> ResponseEntity
 (ㅁ): HTTP 상태 코드를 관리하는 클래스 -> HttpStatus
+```
