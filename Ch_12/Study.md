@@ -31,7 +31,7 @@
 <img width="686" height="297" alt="image" src="https://github.com/user-attachments/assets/9281275d-9336-4323-9eae-5358ac4e9e35" />
 
 ---
-12.3 게시글 조회 요청 개선
+게시글 조회 요청 개선
 ---
 
 ```
@@ -147,3 +147,97 @@ ArticleService에서는 대상을 찾고, 없으면 null을 반환하게 하고,
 ```
 
 -> 웨이터-주방장-보조 요리사
+
+---
+12.3 트랜잭션
+---
+
+```
+*트랜잭션이란 반드시 성공해야만 하는 일련의 과정을 뜻한다. 만약 실패시 원래 상태로 복구된다. 롤백이라고도 한다.
+예시로 새로 데이터를 추가해보겠다. /api/transaction-test의 링크로 들어가게 한다.
+먼저, 그 전에 ArticleApiController에 TransactionTest()라는 메서드를 추가한다.
+```
+
+<img width="752" height="217" alt="image" src="https://github.com/user-attachments/assets/35b2acb1-911e-47a0-b44a-239a59de243d" />
+
+```
+@RequestBody 어노테이션으로 POST 요청시 본문에 실어 보내는 데이터를 transactionTest()메서드의 매개변수로 받아오는 역할을 하게 도와준다. 요청을 받은 컨트롤러는 articleService의 createArticles()메서드를 호출한다. 이때 매개변수로 받은 dtos도 함께 전달하게한다. 게시글이 잘 생성된다는 가정하에, 게시글 정보가 담긴 반환값을 createdList라는 리스트에 저장시킨다. createList에 내용이 있다면 생성이 잘 되었다는 의미이므로 상태는 ok, 본문에는 createdList를 보낸다. 반면 내용이 없으면 BAD_REQUEST를 보내고 빌드만 해서 보낸다.
+```
+
+<img width="754" height="188" alt="image" src="https://github.com/user-attachments/assets/858586e9-5eaf-4a83-820b-e40a27dbae57" />
+
+
+```
+ArticleService에서는
+1. dtos()를 스트림화
+2. map()으로 dto가 하나하나 올 때마다 dto.toEntitiy()를 수행해서 매핑한다.
+3. 매핑한 것을 리스트로 묶는다.
+4. 최종 결과를 articleList에 저장한다.
+```
+
+<img width="917" height="265" alt="image" src="https://github.com/user-attachments/assets/586058a3-3533-445f-b7ff-779bc9674896" />
+
+```
+강제로 예외 상황을 발생시키는데 findById()로 id가 -1인 데이터를 찾는다. 당연히 없을거다. 이런 경우에 orElseThrow()로 예외값을 반환시킨다.
+
+예외를 발생 시켰지만, articleList를 반환하게 한다.
+```
+
+`
+이 상태에서 아까 작성한 JSON을 POST 방식으로 전송해보겠다.
+`
+
+<img width="824" height="824" alt="image" src="https://github.com/user-attachments/assets/b1c8e9b6-a50b-430b-a63c-765b225c59c2" />
+
+```
+강제로 예외를 발생시켰기에 500에러가 뜬다. 로그로 확인해보겠다.
+```
+
+<img width="875" height="586" alt="image" src="https://github.com/user-attachments/assets/af41d8fe-6fa9-428a-a9bb-1b616dd78007" />
+
+
+```
+DB에는 데이터가 생성되었다고 뜬다. 게시판에서 직접 확인해보자.
+```
+
+<img width="843" height="610" alt="image" src="https://github.com/user-attachments/assets/4aa6c7fe-aaad-4916-94f3-0e3431556f5e" />
+
+
+```
+게시판에서는 데이터가 잘 들어간걸 확인 할 수 있다. 이 생성한 데이터들을 실패 이전 상황으로 되돌리기 위해서 트랜잭션을 선언해서 롤백하면된다.
+```
+
+<img width="382" height="48" alt="image" src="https://github.com/user-attachments/assets/34c8ac97-9f2f-4db7-bd9a-c01f421dde31" />
+
+<img width="658" height="101" alt="image" src="https://github.com/user-attachments/assets/26a13e2e-4aed-4696-a50c-8245df3998c3" />
+
+```
+이 상태에서 다시 수행해보겠다.
+```
+
+<img width="1040" height="277" alt="image" src="https://github.com/user-attachments/assets/2cf07f4d-5884-4f5f-b150-3063619058cb" />
+
+```
+로그를 확인해보면 결제실패라고 뜬걸 확인할 수 있다.
+이 이후에 게시판을 다시 새로고침 해보겠다
+```
+
+<img width="829" height="495" alt="image" src="https://github.com/user-attachments/assets/ec13eb27-7e38-48d2-8c68-f57a86c8e54d" />
+
+<img width="1244" height="450" alt="image" src="https://github.com/user-attachments/assets/52d0bbce-31f3-4d6b-898a-bbbae3565690" />
+
+```
+로그에 결제실패가 뜨고 롤백이 일어난걸 확인 할 수 있다.
+```
+
+---
+확인 문제
+---
+
+```
+(ㄱ)이란 모두 성공해야 하는 일련의 과정으로 쪼갤 수 없는 업무 처리의 최소 단위이다.
+(ㄴ)이 선언된 코드 내부에서 만약 실행에 실패하면 변경된 데이터를 모두 이전 값으로 되돌리는데, 이는 (ㄴ)이라고 부른다.
+
+(ㄱ) 트랜잭션
+(ㄴ) 롤백
+```
