@@ -58,4 +58,92 @@
 
 <img width="864" height="820" alt="image" src="https://github.com/user-attachments/assets/66ec58f6-18e6-4d24-b61b-da23f9f2ea77" />
 
+---
+단일 게시글 조회 요청 개선
+---
 
+```
+컨트롤러에서 주석을 해제하고 다음과 같이 바꾸고, show메서드를 ArticleService에 생성해준다.
+```
+
+<img width="424" height="126" alt="image" src="https://github.com/user-attachments/assets/3815cc16-dad3-4b7b-b050-32caf6ec421a" />
+
+<img width="550" height="110" alt="image" src="https://github.com/user-attachments/assets/fb466e14-74f8-48f2-96ff-2459749d8d1a" />
+
+---
+게시글 생성 요청 개선
+---
+
+```
+dto.toEntity()를 삭제하고 articleService.create()를 호출한다.
+return문에서 결과로 받은 created가 null이 아니면 good 요청을 보내고 그렇지 않으면 bad 요청을 보내도록 한다.
+삼항 연산자를 통해서 조건에 따라 실행되게 한다.
+```
+
+<img width="648" height="225" alt="image" src="https://github.com/user-attachments/assets/73d33957-e335-4a82-a238-8673d39d0271" />
+
+```
+ArticleService에 create메서드를 생성한다.
+```
+
+<img width="444" height="133" alt="image" src="https://github.com/user-attachments/assets/a042e480-a217-4cf5-8b16-9c466a446341" />
+
+```
+이 상태에서 서버를 실행 후 API테스트에서 게시글을 입력하면 정상적으로 게시글이 작성되는걸 확인 할 수 있다.
+```
+
+<img width="817" height="806" alt="image" src="https://github.com/user-attachments/assets/40146275-175a-440e-add8-e281ed3a1215" />
+
+```
+하지만, 이미 존재하는 id가 있다면 null을 반환하는 코드를 추가해서 게시글이 겹치는걸 막아줘야한다.
+```
+
+<img width="327" height="98" alt="image" src="https://github.com/user-attachments/assets/e274fcf5-a418-4404-8fb1-ee6ebbdf5a1c" />
+
+---
+게시글 수정 요청 개선
+---
+
+<img width="716" height="217" alt="image" src="https://github.com/user-attachments/assets/b41b9285-0fd2-4bed-b0af-bff6bf3bc028" />
+
+```
+컨트롤러 코드는 다음과 같이 수정해준다. 삼항 연산자를 활용하여 업데이트 된 내용이 있다면 null이 아니라는 의미라서 수정이 잘 되었다는 이야기이다. 만약 내용이 없다면 ResponseEntity의 BAD_REQUEST를 반환해서 보내게한다.
+```
+
+<img width="640" height="399" alt="image" src="https://github.com/user-attachments/assets/c758b8bd-6b6d-4a91-88ae-ff428cdfe4d8" />
+
+```
+그리고 기존에 있던 컨트롤러 코드를 잘라내어 ArticleService의 update메서드로 옮겨준다. 옮겨준 다음 잘못된 요청 처리 부분에서 응답은 컨트롤러가 하므로 return은 null;로 바꾸고, 업데이트 부분도 컨트롤러가 하므로 여기서는 수정 데이터만 반환하게끔 updated;를 반환하게한다.
+```
+
+---
+게시글 삭제 요청 개선
+---
+
+```
+컨트롤러에서는 ArticleService에 생성된 delete 메서드를 통해서 게시글을 삭제해주게 하고, 하단에 삼항연산구문은 삭제 결과에 따라 삭제가 되었으면 NO_CONTENT를 반환시키고, 없는 게시물을 삭제하려고 할때는 BAD_REQUEST를 반환하게 한다.
+```
+
+<img width="689" height="223" alt="image" src="https://github.com/user-attachments/assets/9a95e602-ebef-48cc-acfd-58997f98677b" />
+
+```
+ArticleService에서는 대상을 찾고, 없으면 null을 반환하게 하고, 잘못된 요청을 처리하게 된다면 if문으로 null을 반환하게 하며, 대상을 삭제하게 되면, 레포지토리에서 target이 삭제되게하고, 삭제된 target 자체를 반환하게 코드를 작성한다.
+```
+
+<img width="725" height="279" alt="image" src="https://github.com/user-attachments/assets/a7dc0576-2278-4707-b63c-44397a45c890" />
+
+```
+테스트 해보면 게시글 1번이 잘 삭제 된것을 확인 할 수 있다.
+```
+
+<img width="831" height="615" alt="image" src="https://github.com/user-attachments/assets/26f954fb-d618-4d36-a5d3-d90250b8394d" />
+
+---
+확인 문제
+---
+
+```
+1. 클라이언트의 요청이 오면 클라이언트-컨트롤러-서비스-레포지토리-DB 순으로 작업해 결과를 응답한다. 이를 음식점에 빗대어 클라이언트를 손님 DB를 식자재 창고라고 할때 '컨트롤러->서비스->리파지터리'의 관계로 적절한 것은?
+```
+
+-> 웨이터-주방장-보조 요리사
