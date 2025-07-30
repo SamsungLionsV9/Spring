@@ -51,9 +51,9 @@ List<Article> articles = articleService.index(); 에서 메서드를 호출하�
 assertEquals(expected.toString(), articles.toString());는 JUnit에서 제공하는 메서드인데, 예상테이터(왼쪽)과 실제데이터(오른쪽)을 비교하여 일치하면 테스트를 통과시킨다.
 ```
 
-<img width="741" height="672" alt="image" src="https://github.com/user-attachments/assets/e6592b21-7036-4752-ae4c-a235b5dabfe8" />
+<img width="891" height="752" alt="image" src="https://github.com/user-attachments/assets/c61aabe8-109e-42c1-bf43-a0eac823ef3c" />
 
-<img width="852" height="573" alt="image" src="https://github.com/user-attachments/assets/facf544b-3088-419a-968d-7843cdae7bed" />
+<img width="894" height="149" alt="image" src="https://github.com/user-attachments/assets/ff2bda02-221b-40e1-bdce-f07d6b72c586" />
 
 ```
 또한, 지금까지 작성한 ArticleRepository와 ArticleService의 호환성을 해결하기 위해서 CrudRepository를 JpaRepository로 바꿔준다.
@@ -63,5 +63,88 @@ assertEquals(expected.toString(), articles.toString());는 JUnit에서 제공하
 
 <img width="796" height="178" alt="image" src="https://github.com/user-attachments/assets/0a29209c-d556-4649-b744-989545e74123" />
 
+```
+데이터가 일치하여 테스트를 통과하면 다음과 같이 터미널에 출력된다.
+```
+
+<img width="1353" height="464" alt="image" src="https://github.com/user-attachments/assets/9eb0f9d7-742b-4d75-a56f-b3b11be1d8a6" />
+
+```
+테스트가 실패시 다음과같이 출력된다. id값을 일부로 하나 수정해보았다.
+```
+
+<img width="732" height="271" alt="image" src="https://github.com/user-attachments/assets/61ad6e10-6784-4571-94af-d0972052213f" />
+
+<img width="1371" height="420" alt="image" src="https://github.com/user-attachments/assets/83e7883e-9651-4758-b573-e167a98af3e7" />
+
+---
+show()메서드 테스트하기
+---
+
+<img width="1002" height="789" alt="image" src="https://github.com/user-attachments/assets/106b6fa7-cfb4-4afa-a2c6-4e77cf7e1166"/>
+
+```
+show()메서드는 성공과 실패 두가지 경우로 나누어서 작성하였다. 성공은 존재하는 id를 입력했다는거고, 실패는 존재하지 않는 id를 입력했다는 뜻이다.
+```
+
+<img width="635" height="232" alt="image" src="https://github.com/user-attachments/assets/e9b12c41-87b3-43c6-adec-6774d0b12daf" />
+
+<img width="1314" height="427" alt="image" src="https://github.com/user-attachments/assets/3ec3ea2f-f3ff-4986-b7e2-c89d1584efbf" />
+
+```
+위 사진은 성공일 시 나오는 터미널 출력이다.
+```
+
+<img width="1161" height="715" alt="image" src="https://github.com/user-attachments/assets/263266f0-23ae-456b-bb2a-ee3bb1c62d4c" />
+
+```
+게시물 조회에 실패했을 경우에도 테스트는 잘 통과하지만, null값을 반환하기 때문에 조회에는 실패한것이다.
+```
+
+---
+create() 테스트
+---
+
+`
+성공의 경우
+`
+
+<img width="1277" height="741" alt="image" src="https://github.com/user-attachments/assets/aa33c890-918b-4481-85e5-1bbaf92e3cf4" />
+
+`
+실패의 경우(null값을 반환하기에 toString()은 쓰지않는다.)
+`
+
+<img width="1251" height="761" alt="image" src="https://github.com/user-attachments/assets/3f62c612-f1fe-45ff-bfd9-070e3f06c583" />
 
 
+---
+여러 테스트 케이스 동시에 실행
+---
+
+<img width="841" height="344" alt="image" src="https://github.com/user-attachments/assets/141f3e05-f68d-4ec0-b78d-637e3a3da944" />
+
+
+
+```
+상단에 있는 메인 class를 실행하면 지금까지 만든 5가지의 테스트 케이스를 동시 실행이 가능하다.
+```
+
+<img width="1266" height="427" alt="image" src="https://github.com/user-attachments/assets/b58b9e00-aea4-4ac3-808d-497f19e549c1" />
+
+```
+만약, 문제가 발생하면 트랜잭션으로 처리하여 롤백하도록 해야한다. 이를 위해서 성공 테스트 케이스 상단에 @Transactional 어노테이션을 붙혀야한다.
+```
+
+<img width="837" height="654" alt="image" src="https://github.com/user-attachments/assets/622c3415-a060-4fb2-8996-9fe75674f341" />
+
+
+---
+확인 문제
+---
+
+(ㄱ) 프로그램의 다양한 상황을 자동으로 검증하기 위한 테스트 코드 -> 테스트 케이스
+(ㄴ) 프로그램에서 발생한 문제의 원인을 찾고 고치는 작업 -> 디버깅
+(ㄷ) 프로그램의 수행 결과는 그대로 유지하면서 코드의 구조 및 성능을 개선하는 작업 -> 리팩터링
+(ㄹ) 스프링부트 환경과 연동된 테스트를 위한 어노테이션 -> @SpringBootTest
+(ㅁ) 테스트를 수행해 조작된 데이터를 복구하는 어노테이션 -> @Transactional
