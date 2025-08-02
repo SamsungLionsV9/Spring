@@ -47,6 +47,37 @@ h2-console로 들어가면 테이블이 정확히 생성되어있음을 확인 �
 
 <img width="521" height="438" alt="image" src="https://github.com/user-attachments/assets/14adf595-686f-46cc-a3fb-8f05b1437635" />
 
+---
+더미 데이터 추가
+---
 
+```
+data.sql에 다음과 같이 추가해준다.
 
+INSERT INTO article(title, content) VALUES ('가가가가', '1111');
+INSERT INTO article(title, content) VALUES ('나나나나', '2222');
+INSERT INTO article(title, content) VALUES ( '다다다', '3333');
+
+INSERT INTO article(title, content) VALUES('당신의 인생 영화는?', '댓글');
+INSERT INTO article(title, content) VALUES('당신의 소울 푸드는?', '댓글 ㄱ');
+INSERT INTO article(title, content) VALUES('당신의 취미는?', '댓글 ㄱㄱ');
+
+INSERT INTO comment(article_id, nickname, body) VALUES (4, 'A', '태극기휘날리며');
+INSERT INTO comment(article_id, nickname, body) VALUES (4, 'B', '비긴어게인');
+INSERT INTO comment(article_id, nickname, body) VALUES (4, 'C', '올드보이');
+
+INSERT INTO comment(article_id, nickname, body) VALUES (5, 'D', '치킨');
+INSERT INTO comment(article_id, nickname, body) VALUES (5, 'E', '피자');
+INSERT INTO comment(article_id, nickname, body) VALUES (5, 'F', '초밥');
+
+INSERT INTO comment(article_id, nickname, body) VALUES (6, 'G', '메이플스토리');
+INSERT INTO comment(article_id, nickname, body) VALUES (6, 'F', '배틀그라운드');
+INSERT INTO comment(article_id, nickname, body) VALUES (6, 'K', '오버워치');
+```
+
+<img width="851" height="577" alt="스크린샷 2025-08-02 17 47 22" src="https://github.com/user-attachments/assets/09ea6fcc-aa16-4cb9-a8e9-308b44c74d46" />
+
+h2-console에도 잘 반영되어있음을 알 수 있다.
+
+<img width="638" height="663" alt="image" src="https://github.com/user-attachments/assets/d71e718b-8d9d-4b6b-98dc-d8adc5177155" />
 
