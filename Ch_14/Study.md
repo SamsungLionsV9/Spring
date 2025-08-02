@@ -75,9 +75,30 @@ INSERT INTO comment(article_id, nickname, body) VALUES (6, 'F', '배틀그라운
 INSERT INTO comment(article_id, nickname, body) VALUES (6, 'K', '오버워치');
 ```
 
+<img width="333" height="422" alt="image" src="https://github.com/user-attachments/assets/663edac1-836b-46d2-9bec-f18bb40d842c" />
+
 <img width="851" height="577" alt="스크린샷 2025-08-02 17 47 22" src="https://github.com/user-attachments/assets/09ea6fcc-aa16-4cb9-a8e9-308b44c74d46" />
 
-h2-console에도 잘 반영되어있음을 알 수 있다.
+h2-console에도 잘 반영되어있음을 알 수 있다. Article테이블의 id컬럼은 comment 테이블에서 외래키로 Article_id 컬럼으로 지정되어있음을 확인 가능하다.
 
-<img width="638" height="663" alt="image" src="https://github.com/user-attachments/assets/d71e718b-8d9d-4b6b-98dc-d8adc5177155" />
+---
+특정 게시물의 모든 댓글 조회
+---
 
+<img width="424" height="384" alt="image" src="https://github.com/user-attachments/assets/fbb52221-8a60-40fb-aaac-266d876250a4" />
+
+---
+특정 닉네임의 모든 댓글 조회
+---
+
+<img width="489" height="354" alt="image" src="https://github.com/user-attachments/assets/dd0d145b-68ee-46d6-9bb7-44194f57c9f9" />
+
+---
+확인 문제
+---
+
+댓글과 게시글 테이블은 (ㄱ) 관계이다. -> 다대일
+JPA에서 다대일 관계는 (ㄴ) 어노테이션으로 정의한다. -> @ManyToOne
+데이터의 관계는 대표키와 (ㄷ)의 연결로 이뤄진다. -> 외래키
+댓글 테이블에서 외래키는 (ㄹ)이다. -> article_id
+JPA에서 외래키 지정은 (ㅁ) 어노테이션으로 한다. -> @JoinColumn 
