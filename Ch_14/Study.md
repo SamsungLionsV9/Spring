@@ -26,5 +26,27 @@ JPA로 DB에 명령을 내리는데, 개념을 다시 복습해보자면, 엔티
 <img width="596" height="207" alt="image" src="https://github.com/user-attachments/assets/2509ad8f-6d09-4e49-8c60-590838c8cea6" />
 
 
+```
+@ManyToOne 어노테이션 => 엔티티와 엔티티를 다대일 관계로 지정해준다. 
+@JoinCollum(name="외래키명") => 외래키 매핑을 위해 사용하는 어노테이션이다.
+```
+
+최종 정리하면 Comment.java는 다음과 같다.
+
+<img width="859" height="640" alt="image" src="https://github.com/user-attachments/assets/33fe3ae6-7d17-47c8-8405-69f3855a5e77" />
+
+그 후에 매핑이 잘 되었는지 확인하기 위해서 FirstProjectApplication을 실행한다.
+
+<img width="522" height="191" alt="image" src="https://github.com/user-attachments/assets/93e22234-7464-421a-87d5-278fcba8c81d" />
+
+콘솔을 보면 다음과 같이 테이블이 잘 생성되었음을 확인 가능하다.
+
+<img width="426" height="182" alt="image" src="https://github.com/user-attachments/assets/b1c958b9-5574-47bf-8a99-5f237f645ea5" />
+
+h2-console로 들어가면 테이블이 정확히 생성되어있음을 확인 가능하다.
+
+<img width="521" height="438" alt="image" src="https://github.com/user-attachments/assets/14adf595-686f-46cc-a3fb-8f05b1437635" />
+
+
 
 
