@@ -104,3 +104,41 @@ JPA에서 다대일 관계는 (ㄴ) 어노테이션으로 정의한다. -> @Many
 댓글 테이블에서 외래키는 (ㄹ)이다. -> article_id
 JPA에서 외래키 지정은 (ㅁ) 어노테이션으로 한다. -> @JoinColumn 
 ```
+
+---
+14.3 댓글 레포지토리 만들기
+---
+
+CommentRepository는 JpaRepository를 사용하는것이 좋다.
+
+<img width="849" height="564" alt="image" src="https://github.com/user-attachments/assets/b7ee7467-00af-4bb7-a683-4039943c798f" />
+
+<img width="783" height="350" alt="image" src="https://github.com/user-attachments/assets/dbc194b8-0586-455c-b826-e00b33e1c4b1" />
+
+---
+특정 게시글의 모든 댓글 조회
+---
+
+<img width="867" height="427" alt="image" src="https://github.com/user-attachments/assets/49ce9b4c-f969-432e-a628-2dc819694c54" />
+
+```
+특정 게시글의 모든 댓글을 조회할때 value 속성에 사용할 쿼리를 작성해주면 된다.
+특정 닉네임의 모든 댓글을 조회하는 메서드도 만들어주고, 이는 findByNickname으로 한다. 그리고 매개변수로 nickname을 받아온다.
+또한, xml파일을 통하여 findByNickname() 메서드에서 수행할 쿼리를 작성해준다. 하단에는 해당 xml파일이 있고, 이는 resource경로의 하위 경로를 하나 더 추가해서 그 경로 내에 xml파일 코드를 작성해준다.
+```
+
+<img width="733" height="234" alt="image" src="https://github.com/user-attachments/assets/6d7814ea-7c8c-401f-ae87-41d98592b471" />
+
+```
+<entity-mappings>태그 내부에 <named-native-query>와 <query>태그를 이용하여 쿼리를 입력한다.
+<name-native-query>태그의 name 속성에는 쿼리를 수행하는 대상 엔티티.메서드 이름을 적는다. 즉 CommentRepository의 findByNickname 메서드가 아래 쿼리를 수행하도록 하겠다는 뜻이다. result-class 속성에는 쿼리가 반환하는 타입의 전체 패키지 경로를 적는다. <query> 태그에는 실제 수행할 쿼리를 적는다.
+```
+
+---
+댓글 레포지토리 테스트 코드 작성하기
+---
+
+먼저 CommentRepositoryTest.java를 생성해준다. 
+
+<img width="555" height="219" alt="image" src="https://github.com/user-attachments/assets/a7aa394a-2c6d-4f40-addc-84b1496787d4" />
+
