@@ -138,7 +138,63 @@ CommentRepository는 JpaRepository를 사용하는것이 좋다.
 댓글 레포지토리 테스트 코드 작성하기
 ---
 
-먼저 CommentRepositoryTest.java를 생성해준다. 
+먼저 CommentRepositoryTest.java를 생성해준다. 생성할 때 findByArticleId와 findByNickname 두개 항목을 체크한 상태로 테스트 코드를 생성해준다.
 
-<img width="555" height="219" alt="image" src="https://github.com/user-attachments/assets/a7aa394a-2c6d-4f40-addc-84b1496787d4" />
+<img width="708" height="411" alt="image" src="https://github.com/user-attachments/assets/5f100ee1-1d77-45e6-b9bb-b2e899a69db5" />
 
+---
+findByArticleId 메서드의 테스트 코드 작성
+---
+
+@DisplayName 어노테이션을 사용한다. 이 어노테이션은 메서드 이름은 그대로 둔 채 테스트 이름을 바꾸고 싶을 때 사용한다.
+
+<img width="338" height="144" alt="image" src="https://github.com/user-attachments/assets/1667e3d9-81ee-4fe5-9c26-f378f8fe387e" />
+
+<img width="859" height="514" alt="image" src="https://github.com/user-attachments/assets/19596dd5-301a-47b0-a027-ba8d11c3f67f" />
+
+예상 데이터를 제외한 다른 테스트 코드는 다음과 같다. 빨간색으로 선언되는 이유는 필드 선언 전이기 때문
+
+<img width="859" height="514" alt="image" src="https://github.com/user-attachments/assets/dd11f2f4-93d1-493b-8a4a-d90c0cedfeb4" />
+
+<img width="325" height="437" alt="image" src="https://github.com/user-attachments/assets/bf5c7508-5d0c-4f61-b4cd-d2447bfedd1a" />
+
+<img width="300" height="386" alt="image" src="https://github.com/user-attachments/assets/fafe216f-a836-455a-bae3-972d80e2c8c0" />
+
+두 테이블을 확인해보면 4번 게시물의 댓글이 1~3번 데이터임을 확인 가능하다.
+
+이제 h2-console기반의 테이블 데이터들을 대입하여 예상 데이터를 작성해준다.
+
+<img width="790" height="790" alt="image" src="https://github.com/user-attachments/assets/814d7e5e-6b22-436a-8a2e-c771fd05e5c0" />
+
+최종적인 findByArticleId() 메서드의 테스트 코드는 다음과 같다. 추가적인 어노테이션으로 @DataJpaTest와 @Autowired 어노테이션을 추가해주면 된다.
+
+<img width="786" height="518" alt="image" src="https://github.com/user-attachments/assets/829def9e-56d5-404c-955d-cf346ad74d26" />
+
+<img width="1253" height="280" alt="image" src="https://github.com/user-attachments/assets/6f9a84e4-3053-4c4a-a3e9-ac6e3988f943" />
+
+테스트 코드는 다음과 같고, CommentRepository에서의 문법오류를 발견하여 :를 추가해주었다. articleId부분에 :를 앞에 붙혀야한다.
+
+<img width="608" height="148" alt="image" src="https://github.com/user-attachments/assets/3c182e3f-d3ab-44cc-bced-fd7ae750cd11" />
+
+---
+findByNickname() 테스트
+---
+
+<img width="1092" height="367" alt="image" src="https://github.com/user-attachments/assets/1d8294c9-b159-4ac0-a2f3-7136fa86ab0e" />
+
+```
+이제 닉네임별로 쓴 댓글들을 테스트 해보았다. 코드는 위에서 한 findByArticleId와 유사한데, 예상 데이터에서는 차이가 있다. 게시글 마다 해당 댓글 작성자의 댓글을 찾는거라 new Article(4L, "당신의 인생 영화는?", "댓글")이런식으로 추가해주어야한다.
+추가적으로 앞에 id값을 맞춰주어야한다. 여기서의 4L는 4번 게시물인 영화와 관련된 게시물을 말한다.
+```
+
+---
+확인 문제
+---
+
+```
+(ㄱ)은 ListCrudRepository와 ListPagingAndSortingRepository로부터 확장된 레포지토리 인터페이스다. -> JpaRepository
+(ㄴ)어노테이션을 사용하면 레포지토리가 수행할 SQL문을 직접 명시할 수 있다. -> @Query
+레포지토리가 수행할 SQL문을 (ㄷ)파일로 만들어서 연결할 수도 있다. -> XML
+레포지토리와 엔티티 등의 테스트, 즉 JPA 영역의 테스트는 (ㄹ) 어노테이션으로 명시한다. -> @DataJpaTest
+
+```
