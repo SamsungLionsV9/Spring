@@ -57,18 +57,94 @@ CommentApiController.java은 다음과 같다. @GetMapping으로 댓글 조회 �
 또한, 결과 응답에서 삼항 연산보단 예외처리 방식이 더 선호된다. 예외처리는 예기치 못한 상황이 발생할 때를 대비해서 대처하는 코드를 미리 작성하는것이다.
 ```
 
-<img width="528" height="123" alt="image" src="https://github.com/user-attachments/assets/6c277d3e-82a3-4942-a4e3-ce1266722bc3" />
+<img width="527" height="127" alt="image" src="https://github.com/user-attachments/assets/2291c764-60cc-4363-b4d2-0873e1cc19d0" />
+
 
 ```
 결과응답에서는 서비스에서 반환받은 dtos를 응답 본문에 실어 보낸다. REST API의 응답은 ResponseEntity에 실어 보낸다고 했으므로, return 문에 null을 지우고 ResponseEntity의 상태는 ok, 본문에는 dtos(조회한 댓글 목록)을 실어서 보낸다.
 
-하지만 return문에는 에러가 날텐데, 이는 CommentDto 클래스가 아직 없기 때문이다.
+하지만 return문에는 에러가 날텐데, 이는 CommentDto 클래스가 아직 없기 때문이다. 이를 만들면 에러가안난다.
 ```
 
 ---
 CommentDto.java 만들기
 ---
 
+<img width="569" height="458" alt="image" src="https://github.com/user-attachments/assets/d1db971b-3ed5-4e29-902f-5b7ab927b55c" />
+
+```
+여기서는 롬복으로 기능을 설정해주었고, CommentDto(댓글 엔티티를 담을 그릇)을 만든다. 내부 구조는 사진과 같다.
+이렇게 되면 CommentDto의 빨간색 표시가 사라진다.
+```
+
+---
+요청을 처리할 서비스 만들기
+---
+
+<img width="704" height="485" alt="image" src="https://github.com/user-attachments/assets/4293653b-85f8-48d9-89c7-13d06cdb9efa" />
+
+이렇게 되면 서비스에 comments()메서드가 생성된다.
+
+<img width="611" height="335" alt="image" src="https://github.com/user-attachments/assets/1704389d-486f-4965-aa3e-666e55614f73" />
+
+
+```
+빨간줄이 그여져서 나올텐데, 이를 해결하기 위해서 createCommentDto()를 생성해야한다. CommentDto에서 createCommentDto메서드를 만들어야한다. Comment comment를 매개변수로 가져온다.
+```
+
+<img width="794" height="227" alt="image" src="https://github.com/user-attachments/assets/85c6f3b8-23f4-446d-a8c0-dd7ca18bb131" />
+
+<img width="649" height="99" alt="image" src="https://github.com/user-attachments/assets/6db3f671-26f2-4c57-83ad-7fdc1e22e6f5" />
+
+그리고 createCommentDto메서드를 완성해준다. 가져온것들은 상단에 있는 CommentDto 클래스 내부의 요소들이다.
+
+<img width="630" height="108" alt="image" src="https://github.com/user-attachments/assets/dff93c76-36e9-4b15-b284-0c0c15a08e0c" />
+
+---
+결과 확인하기
+---
+
+프로젝트를 실행 후(자바 메인 메서드를) Talented Api Tester에서 메서드를 GET으로 다음과 같은 링크를 입력한다.
+
+<img width="823" height="776" alt="image" src="https://github.com/user-attachments/assets/00075bef-6002-4f3a-a12f-a67e8a6473c3" />
+
+다음과 같이 잘 나오는걸 확인 할 수 있다.
+
+---
+가독성 처리
+---
+
+<img width="587" height="278" alt="image" src="https://github.com/user-attachments/assets/042a23b5-671b-4ceb-8a4f-0d1f93094cd7" />
+
+
+이 부분을 전체주석 처리해준다.
+
+<img width="1095" height="140" alt="image" src="https://github.com/user-attachments/assets/5dd718cb-0eb8-407a-979e-18a88df71ad4" />
+
+
+그 후에 다음과 같이 수정해준다.
+
+```
+(비고)
+stream()은 컬렉션이나 리스트에 저장된 요소들을 하나씩 참조하며 반복 처리할때 사용
+map은 스트림의 각 요소 a를 꺼내어 b를 수행한 결과로 매핑
+.collect(Collectors.toList());은 스트림 데이터를 리스트 자료형으로 변환하는 코드
+```
+
+<img width="1244" height="984" alt="image" src="https://github.com/user-attachments/assets/b21e312a-ad5d-447e-a9d5-987b48d6efee" />
+
+위 처럼 코드를 작성하여도 잘 나오는걸 확인가능하다.
+
+---
+확인 문제
+---
+
+```
+(ㄱ) 레포지토리가 DB 속 데이터를 조회하거나 전달할 때 사용하는 객체 -> 엔티티
+(ㄴ) 단순 데이터 전송만을 목적으로 하는 객체, 클라이언트와 서버 사이에서 사용됨 -> DTO
+(ㄷ) 컨트롤러와 레포지토리의 사이에서 비즈니스 로직, 즉 처리 흐름을 담당하는 객체 -> 서비스
+(ㄹ) 클라이언트의 요청을 받고 응답하는 객체로, 뷰가 아닌 데이터를 반환 -> REST컨트롤러
+```
 
 
 
