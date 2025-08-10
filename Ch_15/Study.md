@@ -147,7 +147,37 @@ map은 스트림의 각 요소 a를 꺼내어 b를 수행한 결과로 매핑
 ```
 
 
+---
+15.4 댓글 생성하기
+---
 
+TALENTED API Tester로 댓글 생성을 요청하고 결과를 확인해보겠다. 단, 컨트롤러를 먼저 생성해야 댓글 생성이 가능하다.
 
+```
+@PathVariable로 요청 URL의 articleId를 가져오고, 두번째 매개변수는 @RequestBody로 매개변수를 받아온다. CommentDto dto로 받는다.
+```
 
+<img width="771" height="194" alt="image" src="https://github.com/user-attachments/assets/1a6f86a6-3fb5-4c19-ab9e-9a4ff7bc7d25" />
 
+```
+CommentService의 create() 메서드는 컨트롤러의 메서드 이름과 같게 지었다. 메서드의 전달값은 댓글이 소속될 부모 게시글의 id인 articleId와 생성 데이터인 dto를 넘겼다. 하지만 여기서 return문은 댓글 생성이 성공 했을때의 응답이고, 실패한 경우에는 없다.
+의외로 실패는 스프링부트가 예외처리를 담당하므로 이대로 코드를 작성하면 된다.
+```
+
+---
+요청을 처리할 서비스 만들기
+---
+
+서비스에 create()메서드를 만들고, 다음과 같은 동작들을 추가한다.
+
+<img width="877" height="296" alt="image" src="https://github.com/user-attachments/assets/f32cbffd-2612-43e2-8089-2ff33804dd2f" />
+
+그 후에 createComment 메서드를 Comment에 생성해준다.
+
+<img width="821" height="120" alt="image" src="https://github.com/user-attachments/assets/5d0d1196-816f-415b-b5cb-22c56e97e975" />
+
+엔티티 생성 과정은 다음 주석과 같다. 예외는 두가지가 있고, dto에 id가 존재하는 경우와 게시글 id가 잘못된 경우
+
+<img width="627" height="151" alt="image" src="https://github.com/user-attachments/assets/9e86a6cc-1574-49ec-ba93-7d79123cef7e" />
+
+예외 상황 발생하지 않을 시 엔티티를 만들어서 반환하게 한다.
