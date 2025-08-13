@@ -258,5 +258,33 @@ HTTP 요청 중 수정을 위한 메서드에는 PUT과 (ㄱ)이 있다. -> PATC
 입력값이 잘못된 경우에 (ㄴ) 클래스를 사용해 예외처리를 한다. -> update()
 ```
 
+---
+15.6 댓글 삭제하기
+---
+
+컨트롤러에 가서 @DeleteMapping 메서드를 만들어야한다. 컨트롤러 코드는 다음과 같다.
+
+<img width="746" height="203" alt="image" src="https://github.com/user-attachments/assets/a019e0e8-064d-4f7b-9125-3f14a07435a9" />
+
+delete()메서드를 서비스에 만들어준다. 그렇게 오류를 해결해준다. @Transactionl은 상단에 선언되어서 따로 재선언 할 필요없다.
+
+<img width="699" height="231" alt="image" src="https://github.com/user-attachments/assets/0284d976-f0a1-4b3d-9d85-b4b689731abc" />
+
+---
+결과 확인
+---
+
+1번 댓글을 삭제시도하면 200번 상태코드가 뜨면서 잘 삭제되는걸 확인 가능하다.
+
+<img width="851" height="736" alt="image" src="https://github.com/user-attachments/assets/ee084c3e-4173-4e35-a82e-89874fca629f" />
+
+없는 데이터를 삭제요청하게 된다면, 500번 에러가 뜬다.
+
+<img width="849" height="659" alt="image" src="https://github.com/user-attachments/assets/0ec60ccb-c3fe-4e3a-91b6-d5c6decc079f" />
+
+
+
+
+
 
 
