@@ -180,5 +180,31 @@ CommentService의 create() 메서드는 컨트롤러의 메서드 이름과 같�
 
 <img width="627" height="151" alt="image" src="https://github.com/user-attachments/assets/9e86a6cc-1574-49ec-ba93-7d79123cef7e" />
 
-예외 상황 발생하지 않을 시 엔티티를 만들어서 반환하게 한다.
+예외 상황 발생하지 않을 시 엔티티를 만들어서 반환하게 한다. 엔티티는 dto에서 요소들을 가져온다,
+
+<img width="294" height="198" alt="image" src="https://github.com/user-attachments/assets/f88ecc97-a3fc-4efa-a6b1-3bba86253727" />
+
+결과를 확인해보면 4번 게시글의 댓글이 잘 생성됨을 확인 가능하다.
+
+<img width="835" height="820" alt="image" src="https://github.com/user-attachments/assets/1ac824fd-8ee8-443a-8732-3e63f2c949f9" />
+
+---
+잘못된 요청을 보내서 예외 발생 확인
+---
+
+JSON 데이터의 게시글 id값을 바꿔서 보내면 500에러가 뜬다. 이는 createComment()메서드에서 예외가 발생한 것 이다.
+
+<img width="837" height="769" alt="image" src="https://github.com/user-attachments/assets/912f8d4d-9df4-4cca-9b6c-8a3599ea64b2" />
+
+이번에는 없는 게시글인 100번으로 댓글을 등록한다고 가정한다. 이 역시도 없는 게시글에 댓글을 단 것이므로 예외가 발생한다.
+
+<img width="828" height="815" alt="image" src="https://github.com/user-attachments/assets/e286ec17-35ac-4e2c-935c-e63d987f26dd" />
+
+---
+확인 문제
+---
+
+메서드:POST, 5번 게시글에 JSON 데이터를 입력
+
+-> (4) 해당 요청을 통해서 5번 게시글에 댓글이 작성된다.
 
