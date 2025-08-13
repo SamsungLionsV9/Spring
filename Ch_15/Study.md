@@ -282,8 +282,15 @@ delete()메서드를 서비스에 만들어준다. 그렇게 오류를 해결해
 
 <img width="849" height="659" alt="image" src="https://github.com/user-attachments/assets/0ec60ccb-c3fe-4e3a-91b6-d5c6decc079f" />
 
+---
+확인 문제
+---
 
-
+```
+(ㄱ) 어노테이션은 HTTP 삭제 요청을 받아 특정 컨트롤러 메서드를 수행한다. -> @DeleteMapping
+(ㄴ) 어노테이션은 HTTP 요청 주소에서 특정 값을 매개변수로 가져온다. -> @PathVariable
+(ㄷ) 어노테이션은 예외 발생 시 변경된 데이터를 변경 전으로 롤백한다. -> @Transactional
+```
 
 
 
