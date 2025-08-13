@@ -181,3 +181,4 @@ CommentService의 create() 메서드는 컨트롤러의 메서드 이름과 같�
 <img width="627" height="151" alt="image" src="https://github.com/user-attachments/assets/9e86a6cc-1574-49ec-ba93-7d79123cef7e" />
 
 예외 상황 발생하지 않을 시 엔티티를 만들어서 반환하게 한다.
+
