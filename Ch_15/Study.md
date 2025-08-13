@@ -208,3 +208,52 @@ JSON 데이터의 게시글 id값을 바꿔서 보내면 500에러가 뜬다. �
 
 -> (4) 해당 요청을 통해서 5번 게시글에 댓글이 작성된다.
 
+---
+15.5 댓글 수정하기
+---
+
+1번 게시글을 수정하는걸 예시로 두겠다. 먼저 이 요청을 처리할 컨트롤러를 만든다.
+
+`
+Http://localhost:8080/api/comments/1로 설정하고 PATCH 메서드를 사용한다.
+`
+
+기본적인 컨트롤러 코트의 구조는 다음과 같다.
+
+<img width="920" height="183" alt="image" src="https://github.com/user-attachments/assets/dbb49be4-8d93-4175-95a2-a66287907b4a" />
+
+`
+update부분이 빨간줄이 뜰텐데, 이는 commentService에서 메서드를 만들면된다. @Transactional을 써서 롤백할수있게 한다.
+기존에 상단에서 이미 선언되어있으므로 재선언 할 필요는 없다.
+`
+
+<img width="663" height="300" alt="image" src="https://github.com/user-attachments/assets/57c77444-ad6b-42b9-a536-9919da325b78" />
+
+patch에서 오류가 뜰텐데, patch 메서드를 Comment에 생성해주면 된다. patch 메서드는 다음과 같다.
+
+<img width="670" height="280" alt="image" src="https://github.com/user-attachments/assets/7a390ea6-0f12-43fc-a47d-2418519915b6" />
+
+결과를 확인해보면, 정상적으로 수정이 된걸 확인할 수 있다.
+
+<img width="851" height="775" alt="image" src="https://github.com/user-attachments/assets/d90e5db9-2d75-49e0-b037-bb5cf1d75746" />
+
+잘못된 요청을 보내보겠다. 먼저 URL의 id를 3으로 바꾸고 JSON은 그대로 1로 두겠다.
+
+<img width="832" height="815" alt="image" src="https://github.com/user-attachments/assets/09b09e97-8539-44d2-b1be-b4f21f542610" />
+
+이번엔 존재하지 않는 게시글을 수정하는걸 시도해보겠다.
+
+<img width="838" height="786" alt="image" src="https://github.com/user-attachments/assets/c0c4d237-1ac3-4894-aae9-6cc96789e484" />
+
+마찬가지로 이것도 예외가 발생하여 오류가 발생한다.
+
+---
+확인 문제
+---
+
+HTTP 요청 중 수정을 위한 메서드에는 PUT과 (ㄱ)이 있다. -> PATCH
+입력값이 잘못된 경우에 (ㄴ) 클래스를 사용해 예외처리를 한다. -> update()
+
+
+
+
