@@ -42,7 +42,7 @@ form에서 Overview 스타일의 코드를 찾고 복사후 붙혀넣어준다. 
 히든 인풋(hidden input): 웹 페이지에 표시되지 않는 요소, 보이지는 않지만 값을 가지고 있어야 할 때 사용함
 `
 
-<img width="629" height="205" alt="image" src="https://github.com/user-attachments/assets/803477cc-6000-4fc0-a9f1-10a190a7d084" />
+<img width="705" height="120" alt="image" src="https://github.com/user-attachments/assets/9aaf6485-3ac5-4558-9799-b41016e6b447" />
 
 히든 인풋을 적용하여 부모 게시글의 id값을 가진 댓글의 속성을 만들었다. 하단 제출 버튼에도 댓글 작성으로 변경하였다.
 
@@ -70,7 +70,8 @@ _new.mustache 하단에 <script> 코드를 추가하고 내부를 {}블록으로
 
 https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector에 자세히 기재되어있음.
 
-<img width="784" height="735" alt="image" src="https://github.com/user-attachments/assets/78bb5c97-0ac1-42fd-b387-783936fd94b5" />
+<img width="852" height="700" alt="image" src="https://github.com/user-attachments/assets/4c77ceed-05e0-43b4-93d5-b6abcb0cd7ff" />
+
 
 스크립트 부분의 각 객체들(body부분에선 id)를 가져와서 #을 활용해서 적어준다. 댓글 객체가 잘 만들어졌는지 확인을 위한 콘솔 출력을 한다.
 
