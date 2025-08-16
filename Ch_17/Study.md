@@ -70,8 +70,7 @@ _new.mustache 하단에 <script> 코드를 추가하고 내부를 {}블록으로
 
 https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector에 자세히 기재되어있음.
 
-<img width="852" height="700" alt="image" src="https://github.com/user-attachments/assets/4c77ceed-05e0-43b4-93d5-b6abcb0cd7ff" />
-
+<img width="900" height="759" alt="image" src="https://github.com/user-attachments/assets/cac6117d-42bb-4cff-b9d3-0b787a22f35f" />
 
 스크립트 부분의 각 객체들(body부분에선 id)를 가져와서 #을 활용해서 적어준다. 댓글 객체가 잘 만들어졌는지 확인을 위한 콘솔 출력을 한다.
 
