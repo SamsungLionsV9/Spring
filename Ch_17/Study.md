@@ -83,7 +83,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector에 자세
 
 fetch()함수를 활용하여 웹 페이지에서 GET, POST, PATCH, DELETE같은 요청을 보내고 응답을 받을 수 있다.
 
-<img width="737" height="270" alt="image" src="https://github.com/user-attachments/assets/17344d40-6c6e-4db2-a07b-80a520d7c500" />
+<img width="540" height="113" alt="image" src="https://github.com/user-attachments/assets/e1c40154-ee9c-4959-b6ea-80d355551312" />
 
 ```
 1. 첫 번째 전달값으로 API 주소를 가지고 있는 url을 넘긴다.
