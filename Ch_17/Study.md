@@ -34,7 +34,7 @@ form에서 Overview 스타일의 코드를 찾고 복사후 붙혀넣어준다. 
 
 폼을 전부 알맞게 수정하면 다음과 같은 형태로 바뀐다. 추가적으로 하단에서 fetch()함수를 쓰려면 제출을 button형태로 해야한다.
 
-<img width="798" height="349" alt="image" src="https://github.com/user-attachments/assets/30c6d920-2016-493a-bc2e-9745bf225f55" />
+<img width="829" height="422" alt="image" src="https://github.com/user-attachments/assets/13c07c94-eeb7-4b8b-8219-2a7ef77841ba" />
 
 여기서 히든 인풋을 사용해야하는데, 댓글은 부모 게시글의 id를 가져야하기 때문이다. 
 
