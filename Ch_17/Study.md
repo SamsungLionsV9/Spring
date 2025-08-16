@@ -74,7 +74,8 @@ https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector에 자세
 
 스크립트 부분의 각 객체들(body부분에선 id)를 가져와서 #을 활용해서 적어준다. 댓글 객체가 잘 만들어졌는지 확인을 위한 콘솔 출력을 한다.
 
-<img width="657" height="172" alt="image" src="https://github.com/user-attachments/assets/ef126561-2c4a-4692-939c-16224e99880b" />
+<img width="659" height="105" alt="image" src="https://github.com/user-attachments/assets/ce446f79-6c5e-40c1-9973-746242aeaad9" />
+
 
 ---
 17.4 자바스크립트로 REST API 호출하고 응답 처리하기
@@ -104,4 +105,15 @@ JSON.stringify() 메서드를 사용한다. 헤더 정보에 전송 본문의 �
 
 댓글 작성에 성공한 경우
 
+<img width="849" height="781" alt="image" src="https://github.com/user-attachments/assets/0caccfb9-ebb1-4d76-ac80-e6cd0f45c69d" />
 
+---
+확인 문제
+---
+
+```
+1. 자바스크립트에 관한 설명 중 잘못된 것은?
+ -> (1) alert()는 입력 문자열을 브라우저 콘솔에 출력한다.
+
+   이유: 알림창(팝업)으로 띄우는것이 정답이다.
+```
