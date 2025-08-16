@@ -97,6 +97,9 @@ JSON.stringify() 메서드를 사용한다. 헤더 정보에 전송 본문의 �
 
 <img width="857" height="1028" alt="image" src="https://github.com/user-attachments/assets/dc554424-94b3-4fca-bad2-50115deb86f4" />
 
+<img width="855" height="1017" alt="image" src="https://github.com/user-attachments/assets/415a404f-28e1-4c5c-b9d1-425c9d3fe21f" />
+
+댓글 작성 실패한 경우
 
 
 
