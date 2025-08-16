@@ -100,6 +100,8 @@ JSON.stringify() 메서드를 사용한다. 헤더 정보에 전송 본문의 �
 
 댓글 작성 실패한 경우
 
+<img width="857" height="1019" alt="image" src="https://github.com/user-attachments/assets/5af88de4-1a42-4daa-b2d2-330240485ae9" />
 
+댓글 작성에 성공한 경우
 
 
