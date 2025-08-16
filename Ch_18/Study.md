@@ -61,3 +61,8 @@ _new.mustache에서 form 부분을 복사한다.
 4. 전송 버튼의 id를 comment-update-btn(수정 버튼)으로 수정한다. 그리고 버튼 제목도 변경해준다.
 ```
 
+이제 웹페이지에서 수정 버튼을 누르면 다음과 같은 모달 창이 뜬다.
+
+<img width="862" height="613" alt="image" src="https://github.com/user-attachments/assets/ac7b7b7b-5bbd-416f-a7ba-3df6337e8af2" />
+
+
