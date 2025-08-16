@@ -32,7 +32,7 @@ form에서 Overview 스타일의 코드를 찾고 복사후 붙혀넣어준다. 
 
 <img width="862" height="437" alt="image" src="https://github.com/user-attachments/assets/70ee80e6-7b74-4eea-94b5-49372e5b4056" />
 
-폼을 전부 알맞게 수정하면 다음과 같은 형태로 바뀐다.
+폼을 전부 알맞게 수정하면 다음과 같은 형태로 바뀐다. 추가적으로 하단에서 fetch()함수를 쓰려면 제출을 button형태로 해야한다.
 
 <img width="798" height="349" alt="image" src="https://github.com/user-attachments/assets/30c6d920-2016-493a-bc2e-9745bf225f55" />
 
@@ -62,7 +62,7 @@ _new.mustache 하단에 <script> 코드를 추가하고 내부를 {}블록으로
 자바스크립트의 querySelector() 메서드는 웹 페이지에서 특정 요소를 선택할 때 사용한다. id, name, class 등등의 태그에 값을 입력하면 해당 속성 값을 가진 대상을 반환해준다. 여기서는 id값으로 특정 요소를 선택해준다.
 ```
 
-<img width="766" height="234" alt="image" src="https://github.com/user-attachments/assets/0c645f5e-f910-46b8-8c55-b4381f91973d" />
+<img width="805" height="193" alt="image" src="https://github.com/user-attachments/assets/2349d632-acf0-403e-8303-75a7c125019c" />
 
 ```
 댓글 작성 버튼의 id값인 comment-create-btn을 #과 함께 querySelector()메서드로 입력하고, 이렇게 찾은 댓글 작성 버튼을 상수 타입의 commentCreateBtn 변수에 저장한다.
