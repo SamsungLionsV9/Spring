@@ -65,4 +65,100 @@ _new.mustache에서 form 부분을 복사한다.
 
 <img width="862" height="613" alt="image" src="https://github.com/user-attachments/assets/ac7b7b7b-5bbd-416f-a7ba-3df6337e8af2" />
 
+---
+18.4 자바스크립트로 댓글 수정하기
+---
+
+댓글을 수정하려면 이전 댓글 데이터를 가져와야한다. 댓글 수정 버튼을 클릭했을 때 수정 폼에 이전 댓글 데이터가 전달 될 수 있게 한다.
+
+```
+1. data-bs-id 속성을 추가하고 현재 댓글의 {{id}}값을 저장한다.
+2. data-bs-nickname 속성을 추가하고 현재 댓글의 {{nickname}}값을 저장한다.
+3. data-bs-body 속성을 추가하고 현재 댓글의 {{body}}값을 저장한다.
+4. data-bs-article-id 속성을 추가하고 현재 댓글의 {{articleId}}값을 저장한다.
+```
+
+<img width="588" height="210" alt="image" src="https://github.com/user-attachments/assets/bc2be153-20b2-4f9a-8e1f-393524a0d9aa" />
+
+data- 로 시작하는 속성은 데이터 속성이라고 칭한다. 데이터 속성은 HTML 요소에 추가 정보를 저장하고 싶을 때 사용한다. 개수에 제한이 없으므로 하나의 요소에 여러 데이터 속성을 사용할 수 있다. data- 로 시작하고 그 다음에 자유롭게 붙이면 된다.
+
+<img width="747" height="253" alt="image" src="https://github.com/user-attachments/assets/0e0f744d-0612-434f-9f15-2c63d7ad1785" />
+
+코드 맨 아래에 스크립트 태그를 넣고 중괄호를 넣어서 영역을 잡아준다. 모달 이벤트 처리를 위해서는 먼저 모달을 선택해야한다. querySelector() 메서드로 모달을 선택하고 commentEditModal 변수에 저장해준다.
+
+<img width="631" height="139" alt="image" src="https://github.com/user-attachments/assets/0fc58744-113f-46fb-82ba-b632045a3653" />
+
+또한, 모달 이벤트를 감지할때 addEventListener()메서드를 사용하여 감지해준다.
+
+<img width="590" height="79" alt="image" src="https://github.com/user-attachments/assets/557d8616-53c6-4c9a-804c-c270780932e4" />
+
+function(event)는 모달이 열리는 이벤트를 매개변수로 받아 실행되는 함수이다. 이는 이벤트 핸들러라고 부른다.
+
+```
+show.bs.modal: 모달이 열리기 직전 발생하는 이벤트
+function(event): 이벤트를 받아 처리하는 함수, 이벤트 핸들러
+function(event)의 event: 발생된 이벤트 정보를 가리키는 매개변수, 여기서는 show.bs.modal을 칭함
+```
+
+개요는 다음과 같다.
+
+<img width="732" height="425" alt="image" src="https://github.com/user-attachments/assets/58a912f9-29d8-4b62-863d-ef3fd55edf76" />
+
+이 상태에서 수정 버튼을 누르면 기존 댓글에 대한 정보가 나타난다.
+
+<img width="853" height="621" alt="image" src="https://github.com/user-attachments/assets/03a6af39-61f4-4d10-8756-20bac14545bb" />
+
+---
+18.5 자바스크립트로 REST API 호출하고 응답 처리하기
+---
+
+스크립트 부분에서 수정 완료 버튼을 선택 후 댓글 생성에서 했던 것 처럼 querySelector(#comment-update-btn)으로 선택한 후 commentUpdateBtn 변수로 가져온다.
+
+<img width="711" height="291" alt="image" src="https://github.com/user-attachments/assets/a8ed5fb0-09e1-4244-9707-b1ee198d5f93" />
+
+<img width="653" height="114" alt="image" src="https://github.com/user-attachments/assets/eccd710c-623c-4886-be4b-9d30d7815775" />
+
+```
+클릭 이벤트를 처리하기 위한 addEventListener 메서드를 활용한다. 17장에서 했던 것 처럼 객체를 변수로 선언하는 객체 리터럴 방식으로 만든다. 객체의 키는 id, nickname, body, articleId고, 각 키의 값을 querySelector()로 댓글 수정 폼의 각 요소를 선택한 후 value값을 가져온다. 그리고 나서 콘솔에 로그를 찍어서 객체가 잘 만들어졌는지 확인한다.
+```
+
+<img width="679" height="272" alt="image" src="https://github.com/user-attachments/assets/91681700-6b4c-4dd3-9e7b-20928b0b7549" />
+
+그 후에 하단에 fetch()함수를 사용한다. 
+```
+1. 첫 번째 전달값: API 주소를 가지고 있는 url을 넘김
+2. 두 번째 전달값: 요청 메서드, 헤더 정보, 전송 본문을 전달함, 헤더 정보에는 전송 본문 데이터의 타입이 JSON임을 명시하는 내용을 넣는다.
+```
+
+빌드 후 웹 페이지에 접속해서 점검해본다.
+
+<img width="386" height="185" alt="image" src="https://github.com/user-attachments/assets/366f46c1-baad-40c1-b6cc-7789983ce27e" />
+
+인텔리제이에서 update문이 실행되었으면 정상적으로 커밋된것이다. 또한 h2-console에서도 확인해보면 잘 바뀐걸 확인 가능하다.
+
+<img width="266" height="33" alt="image" src="https://github.com/user-attachments/assets/060f4d84-a485-43b3-a036-4f89121eb489" />
+
+이제 사용자 입장에서 수정이 잘 되었는지 확인 가능한 response 구문을 작성해보겠다. 17장과 마찬가지로 응답처리와 새로고침 기능을 추가해준다.
+
+<img width="685" height="172" alt="image" src="https://github.com/user-attachments/assets/54bf8532-164b-4a03-9a2a-f3751c2b2553" />
+
+<img width="860" height="597" alt="image" src="https://github.com/user-attachments/assets/10b12e0a-6657-4796-9f27-f76b1874bbcd" />
+
+<img width="856" height="579" alt="image" src="https://github.com/user-attachments/assets/d46cfc88-9bd1-4504-8b57-bcb594748a69" />
+
+댓글이 잘 수정되고 반영된걸 확인할 수 있다.
+
+<img width="836" height="241" alt="image" src="https://github.com/user-attachments/assets/245b55f7-3f7d-4015-8ad0-f5ab10bd2240" />
+
+---
+확인 문제
+---
+
+```
+1. 다음중 옳은것을 모두 고르세요
+-> (1), (3), (4)
+
+   (2)번 오답이유: show.bs.modal 이벤트는 모달이 보여지기 직전에 실행됨
+   (5)번 오답이유: JSON.stringify()는 자바스크립트 객체를 JSON 문자열로 변환시키는 역할을 한다.
+```
 
