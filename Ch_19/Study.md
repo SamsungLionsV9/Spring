@@ -46,6 +46,49 @@
 <img width="650" height="231" alt="image" src="https://github.com/user-attachments/assets/4e8703a0-ab72-492d-a1dd-d66a2ba05cb0" />
 
 `
-단, querySelector() 메서드로 삭제 버튼을 선택하면 이 문서에서 처음 나온 삭제 버튼만 선택하기 때문에 querySelectorAll()메서드를 이용하여야 한다. 이 메서드는 선택자로 지정한 모든 요소를 찾아서 반환하기 때문에, 모든 삭제 버튼이 선택 가능하다. 그렇기에 아래와 같이 수정한다.
+단, querySelector() 메서드로 삭제 버튼을 선택하면 이 문서에서 처음 나온 삭제 버튼만 선택하기 때문에 querySelectorAll()메서드를 이용하여야 한다. 이 메서드는 선택자로 지정한 모든 요소를 찾아서 반환하기 때문에, 모든 삭제 버튼이 선택 가능하다. 그렇기에 아래와 같이 수정한다. 또한 버튼 여러개를 가져와서 변수화 했으므로 이벤트 처리 코드도 달라져야한다. forEach()메서드를 사용한다.
 `
+
+`
+forEach()메서드는 배열 또는 배열과 유사한 일련의 데이터 묶음(NodeList, Map, Set, String)을 순회하면서 처리하는 메서드이므로,
+매개변수로 주어진 함수를 배열 속 각 요소에 적용하여 처리한다.
+`
+
+<img width="664" height="266" alt="image" src="https://github.com/user-attachments/assets/81766104-9f4c-44b3-8451-a142e426a5ac" />
+
+콘솔로그에 해당 댓글의 id를 가져와서 출력할때로 작성해보자면, data-comment-id="{{id}}"를 해당 데이터 속성으로 추가한다.
+
+<img width="851" height="75" alt="image" src="https://github.com/user-attachments/assets/75e0fd4f-2977-43d8-b886-7713bd0c2eb6" />
+
+클릭시 생기는 이벤트를 정리하면 다음과 같다. 백틱을 사용하여 ${}문법으로 문자열에 변수 또는 식을 넣을 수 있다.
+
+<img width="1176" height="357" alt="image" src="https://github.com/user-attachments/assets/8009dfc7-7e64-4963-8de8-787b0dfd0579" />
+
+---
+19.3 REST API호출하고 응답 처리
+---
+
+<img width="620" height="360" alt="image" src="https://github.com/user-attachments/assets/0894f8dd-05da-4cfe-816d-0cb63bac58df" />
+
+등록, 수정 메서드에서 했던 과정과 유사한 패턴을 보인다.
+
+---
+확인 문제
+---
+
+다음 자바스크립트 코드의 출력 결과는?
+
+```
+const arr = [1,2,3,4];
+let sum = 0;
+arr.forEach((item) => {
+  sum += item * item;
+});
+console.log(`sum = ${sum}`);
+```
+
+`
+=> 30
+`
+
 
