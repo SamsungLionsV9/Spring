@@ -41,4 +41,11 @@
 
 <img width="522" height="25" alt="image" src="https://github.com/user-attachments/assets/d8c190c5-b003-4884-b502-462f47fdcf58" />
 
+삭제 버튼 이벤트 처리는 다음과 같다.
+
+<img width="650" height="231" alt="image" src="https://github.com/user-attachments/assets/4e8703a0-ab72-492d-a1dd-d66a2ba05cb0" />
+
+`
+단, querySelector() 메서드로 삭제 버튼을 선택하면 이 문서에서 처음 나온 삭제 버튼만 선택하기 때문에 querySelectorAll()메서드를 이용하여야 한다. 이 메서드는 선택자로 지정한 모든 요소를 찾아서 반환하기 때문에, 모든 삭제 버튼이 선택 가능하다. 그렇기에 아래와 같이 수정한다.
+`
 
